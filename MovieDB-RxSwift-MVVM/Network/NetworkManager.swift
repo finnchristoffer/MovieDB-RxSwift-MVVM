@@ -5,28 +5,23 @@
 //  Created by Finn Christoffer Kurniawan on 18/02/23.
 //
 
+
 import Foundation
+import RxSwift
 
 class NetworkManager {
-    func fetchMovieDataFromAPI<T: Codable>(url: String, expecting: T.Type ,completion: @escaping (Result<T, Error>) -> Void) {
-        guard let url = URL(string: url) else { return }
+    func fetchMovieDataFromAPI<T: Codable>(url: String, expecting: T.Type) -> Observable<T> {
+        guard let url = URL(string: url) else { return Observable.error(NetworkError.invalidURL) }
 
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-            }
-
-            guard let data = data else { return }
-
-            do {
+        return URLSession.shared.rx.data(request: URLRequest(url: url))
+            .map { data -> T in
                 let decodedData = try JSONDecoder().decode(expecting, from: data)
-                DispatchQueue.main.async {
-                    completion(.success(decodedData))
-                }
-            } catch {
-                completion(.failure(error))
+                return decodedData
             }
-        }
-        .resume()
+            .asObservable()
     }
+}
+
+enum NetworkError: Error {
+    case invalidURL
 }

@@ -8,10 +8,10 @@
 import Foundation
 
 struct VideoResponse: Codable {
-    var results: [Videos]
+    var results: [Video]
 }
 
-struct Videos: Codable {
+struct Video: Codable {
     let id: String
     let name: String
     let key: String

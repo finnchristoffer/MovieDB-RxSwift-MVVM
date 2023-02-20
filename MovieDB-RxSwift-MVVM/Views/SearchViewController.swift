@@ -81,7 +81,7 @@ class SearchViewController: UIViewController {
             tableView.rx.modelSelected(Movie.self)
                 .subscribe(onNext: { [weak self] movie in
                     let movieDetailsView = MovieDetailsViewController()
-//                    movieDetailsView.movieID = movie.id
+                    movieDetailsView.movieID = movie.id
                     movieDetailsView.hidesBottomBarWhenPushed = true
                     self?.navigationController?.pushViewController(movieDetailsView, animated: true)
                 })

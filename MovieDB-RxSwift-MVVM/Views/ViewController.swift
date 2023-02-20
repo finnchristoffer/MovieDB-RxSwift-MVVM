@@ -10,10 +10,6 @@ import RxSwift
 import RxCocoa
 
 class ViewController: UIViewController {
-
-
-//    private var cancellables: Set<AnyCancellable> = []
-    
     
     // MARK: - Properties
     
@@ -157,6 +153,12 @@ class ViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
+    }
+    
+    private func selectedItem() {
+       
+
+
     }
     
 

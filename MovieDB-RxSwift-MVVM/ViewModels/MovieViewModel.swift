@@ -27,11 +27,11 @@ class MovieViewModel {
     private let topRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=d8bf466e0e794e7f8499748928d9f491"
     
     func getNowPlayingMovie() {
-            network.fetchMovieDataFromAPI(url: nowPlayingURL, expecting: MovieResponse.self)
-                .map { $0.results }
-                .bind(to: nowPlaying)
-                .disposed(by: disposeBag)
-        }
+        network.fetchMovieDataFromAPI(url: nowPlayingURL, expecting: MovieResponse.self)
+            .map { $0.results }
+            .bind(to: nowPlaying)
+            .disposed(by: disposeBag)
+    }
     
     func getUpcomingMovie() {
         network.fetchMovieDataFromAPI(url: upcomingURL, expecting: MovieResponse.self)
@@ -48,19 +48,19 @@ class MovieViewModel {
     }
     
     func getMovieDetails(movieID: Int) {
-            let url = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=d8bf466e0e794e7f8499748928d9f491"
-            network.fetchMovieDataFromAPI(url: url, expecting: Movie.self)
-                .bind(to: movieDetails)
-                .disposed(by: disposeBag)
-        }
+        let url = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=d8bf466e0e794e7f8499748928d9f491"
+        network.fetchMovieDataFromAPI(url: url, expecting: Movie.self)
+            .bind(to: movieDetails)
+            .disposed(by: disposeBag)
+    }
     
     func getMovieVideos(movieID: Int) {
-            let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=d8bf466e0e794e7f8499748928d9f491"
-            network.fetchMovieDataFromAPI(url: url, expecting: VideoResponse.self)
-                .map { $0.results }
-                .bind(to: videos)
-                .disposed(by: disposeBag)
-        }
+        let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=d8bf466e0e794e7f8499748928d9f491"
+        network.fetchMovieDataFromAPI(url: url, expecting: VideoResponse.self)
+            .map { $0.results }
+            .bind(to: videos)
+            .disposed(by: disposeBag)
+    }
     
     func getMovieDataFromSearch(searchText: String) {
         let url = "https://api.themoviedb.org/3/search/movie?api_key=d8bf466e0e794e7f8499748928d9f491&language=en-US&query=\(searchText)"
@@ -69,7 +69,7 @@ class MovieViewModel {
             .bind(to: searchedMovies)
             .disposed(by: disposeBag)
     }
-
+    
     func arrangeMovieGenresInHorizontalText() -> Observable<String> {
         return movieDetails
             .map { movie in

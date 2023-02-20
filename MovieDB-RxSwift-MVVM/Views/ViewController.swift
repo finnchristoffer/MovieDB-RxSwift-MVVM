@@ -13,7 +13,7 @@ class ViewController: UIViewController {
     
     // MARK: - Properties
     
-    let viewModel = MovieViewModel()
+    let vm = MovieViewModel()
     private let disposeBag = DisposeBag()
     
     lazy var nowPlayingLabel = reuseableTitleLabel(text: "Now Playing")
@@ -24,28 +24,26 @@ class ViewController: UIViewController {
     lazy var collectionView2 = reuseableCollectionView(identifier: "cell2")
     lazy var collectionView3 = reuseableCollectionView(identifier: "cell3")
     
-    lazy var text: UITextView = {
-       let text = UITextView()
+    private lazy var text: UITextView = {
+        let text = UITextView()
         text.text = "Hello"
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
     
-    lazy var scrollView: UIScrollView = {
-       let scroll = UIScrollView()
+    private lazy var scrollView: UIScrollView = {
+        let scroll = UIScrollView()
         scroll.isScrollEnabled = true
         scroll.translatesAutoresizingMaskIntoConstraints = false
         return scroll
     }()
     
-    lazy var contentView: UIStackView = {
-       let view = UIStackView()
+    private lazy var contentView: UIStackView = {
+        let view = UIStackView()
         view.axis = .vertical
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-    
-
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -53,26 +51,27 @@ class ViewController: UIViewController {
         view.backgroundColor = UIColor.white
         setupViews()
         setupConstraints()
-        viewModel.getNowPlayingMovie()
-        viewModel.getUpcomingMovie()
-        viewModel.getTopRatedMovie()
+        vm.getNowPlayingMovie()
+        vm.getUpcomingMovie()
+        vm.getTopRatedMovie()
         bindVM()
+        selectedItem()
         title = "Movie"
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
     }
     // MARK: - Helpers
     
-    func reuseableTitleLabel(text: String) -> UILabel {
-       let label = UILabel()
+    private func reuseableTitleLabel(text: String) -> UILabel {
+        let label = UILabel()
         label.text = text
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }
     
-    func reuseableCollectionView(identifier: String) -> UICollectionView {
-       let layout = UICollectionViewFlowLayout()
+    private func reuseableCollectionView(identifier: String) -> UICollectionView {
+        let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 150, height: 220)
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -80,6 +79,13 @@ class ViewController: UIViewController {
         cv.showsHorizontalScrollIndicator = false
         cv.register(CustomCell.self, forCellWithReuseIdentifier: identifier)
         return cv
+    }
+    
+    private func navigateToAnotherViewController(movieID: Int) {
+        let movieDetailsView = MovieDetailsViewController()
+        movieDetailsView.movieID = movieID
+        movieDetailsView.hidesBottomBarWhenPushed = true
+        self.navigationController?.pushViewController(movieDetailsView, animated: true)
     }
     
     private func setupViews() {
@@ -123,7 +129,7 @@ class ViewController: UIViewController {
     }
     
     private func bindVM() {
-        viewModel.nowPlaying
+        vm.nowPlaying
             .bind(to: collectionView1.rx.items(cellIdentifier: "cell1", cellType: CustomCell.self)) { _, movie, cell in
                 let stringURL = "https://image.tmdb.org/t/p/w1280/\(movie.poster ?? "")"
                 if let url = URL(string: stringURL) {
@@ -133,7 +139,7 @@ class ViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.upcoming
+        vm.upcoming
             .bind(to: collectionView2.rx.items(cellIdentifier: "cell2", cellType: CustomCell.self)) { _, movie, cell in
                 let stringURL = "https://image.tmdb.org/t/p/w1280/\(movie.poster ?? "")"
                 if let url = URL(string: stringURL) {
@@ -143,7 +149,7 @@ class ViewController: UIViewController {
             }
             .disposed(by: disposeBag)
         
-        viewModel.topRated
+        vm.topRated
             .bind(to: collectionView3.rx.items(cellIdentifier: "cell3", cellType: CustomCell.self)) { _, movie, cell in
                 let stringURL = "https://image.tmdb.org/t/p/w1280/\(movie.poster ?? "")"
                 if let url = URL(string: stringURL) {
@@ -156,10 +162,35 @@ class ViewController: UIViewController {
     }
     
     private func selectedItem() {
-       
-
-
+        
+        collectionView1.rx.itemSelected
+            .map{ [weak self] indexPath in
+                return self?.vm.nowPlaying.value[indexPath.row].id ?? 0
+            }
+            .subscribe(onNext: {[weak self] movieID in
+                self?.navigateToAnotherViewController(movieID:movieID)
+            })
+            .disposed(by: disposeBag)
+        
+        collectionView2.rx.itemSelected
+            .map{ [weak self] indexPath in
+                return self?.vm.upcoming.value[indexPath.row].id ?? 0
+            }
+            .subscribe(onNext: {[weak self] movieID in
+                self?.navigateToAnotherViewController(movieID:movieID)
+            })
+            .disposed(by: disposeBag)
+        
+        collectionView3.rx.itemSelected
+            .map{ [weak self] indexPath in
+                return self?.vm.topRated.value[indexPath.row].id ?? 0
+            }
+            .subscribe(onNext: {[weak self] movieID in
+                self?.navigateToAnotherViewController(movieID:movieID)
+            })
+            .disposed(by: disposeBag)
+        
     }
     
-
+    
 }

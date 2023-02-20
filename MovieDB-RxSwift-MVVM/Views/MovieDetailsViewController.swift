@@ -47,6 +47,7 @@ class MovieDetailsViewController: UIViewController {
     private lazy var movieTitle: UILabel = {
         let title = UILabel()
         title.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        title.textAlignment = .center
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
     }()
@@ -125,7 +126,7 @@ class MovieDetailsViewController: UIViewController {
         bottomStackView.addArrangedSubview(tableView)
     }
     
-    func getTableViewHeightMultiplier() -> CGFloat {
+    private func getTableViewHeightMultiplier() -> CGFloat {
         if vm.videos.value.count > 2 && vm.videos.value.count < 5 {
             return 0.3
         } else if vm.videos.value.count == 5 {

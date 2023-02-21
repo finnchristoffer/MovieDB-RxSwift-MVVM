@@ -9,7 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-class ViewController: UIViewController {
+class HomeViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -26,7 +26,7 @@ class ViewController: UIViewController {
     
     private lazy var text: UITextView = {
         let text = UITextView()
-        text.text = "Hello"
+        
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.systemBackground
         setupViews()
         setupConstraints()
         vm.getNowPlayingMovie()
@@ -65,6 +65,13 @@ class ViewController: UIViewController {
     private func reuseableTitleLabel(text: String) -> UILabel {
         let label = UILabel()
         label.text = text
+        label.textColor = UIColor.init { (traitCollection: UITraitCollection) -> UIColor in
+            if traitCollection.userInterfaceStyle == .dark {
+                return UIColor.white
+            } else {
+                return UIColor.black
+            }
+        }
         label.font = UIFont.systemFont(ofSize: 22, weight: .bold)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label

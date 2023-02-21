@@ -11,7 +11,7 @@
 		4A2379FA29A084CD003209D9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A2379F929A084CD003209D9 /* SceneDelegate.swift */; };
 		4A237A0129A084CE003209D9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4A237A0029A084CE003209D9 /* Assets.xcassets */; };
 		4A237A0C29A08736003209D9 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A0B29A08736003209D9 /* TabBarViewController.swift */; };
-		4A237A0E29A08753003209D9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A0D29A08753003209D9 /* ViewController.swift */; };
+		4A237A0E29A08753003209D9 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A0D29A08753003209D9 /* HomeViewController.swift */; };
 		4A237A1029A08791003209D9 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A0F29A08791003209D9 /* SearchViewController.swift */; };
 		4A237A1729A08AE0003209D9 /* UIImageView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A1629A08AE0003209D9 /* UIImageView+Extentions.swift */; };
 		4A237A1929A08B65003209D9 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A1829A08B65003209D9 /* Movie.swift */; };
@@ -20,6 +20,7 @@
 		4A237A1F29A2267F003209D9 /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A1E29A2267F003209D9 /* MovieViewModel.swift */; };
 		4A237A2229A24AF6003209D9 /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A2129A24AF6003209D9 /* CustomCell.swift */; };
 		4A237A2429A28152003209D9 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A2329A28152003209D9 /* MovieDetailsViewController.swift */; };
+		4A237A2629A49F49003209D9 /* UIColor+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A2529A49F49003209D9 /* UIColor+Extentions.swift */; };
 		58864128D6B85B055B67C4EA /* Pods_MovieDB_RxSwift_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8777A85410356B004717BCF7 /* Pods_MovieDB_RxSwift_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +31,7 @@
 		4A237A0029A084CE003209D9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4A237A0529A084CE003209D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4A237A0B29A08736003209D9 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
-		4A237A0D29A08753003209D9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4A237A0D29A08753003209D9 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		4A237A0F29A08791003209D9 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4A237A1629A08AE0003209D9 /* UIImageView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extentions.swift"; sourceTree = "<group>"; };
 		4A237A1829A08B65003209D9 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -39,6 +40,7 @@
 		4A237A1E29A2267F003209D9 /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
 		4A237A2129A24AF6003209D9 /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		4A237A2329A28152003209D9 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
+		4A237A2529A49F49003209D9 /* UIColor+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentions.swift"; sourceTree = "<group>"; };
 		5624579C85C0B1D0160B64D2 /* Pods-MovieDB-RxSwift-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB-RxSwift-MVVM.release.xcconfig"; path = "Target Support Files/Pods-MovieDB-RxSwift-MVVM/Pods-MovieDB-RxSwift-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		8777A85410356B004717BCF7 /* Pods_MovieDB_RxSwift_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB_RxSwift_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41AD604A50E4E9BDB83F909 /* Pods-MovieDB-RxSwift-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB-RxSwift-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB-RxSwift-MVVM/Pods-MovieDB-RxSwift-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 			children = (
 				4A237A2029A24AD7003209D9 /* Cells */,
 				4A237A0F29A08791003209D9 /* SearchViewController.swift */,
-				4A237A0D29A08753003209D9 /* ViewController.swift */,
+				4A237A0D29A08753003209D9 /* HomeViewController.swift */,
 				4A237A0B29A08736003209D9 /* TabBarViewController.swift */,
 				4A237A2329A28152003209D9 /* MovieDetailsViewController.swift */,
 			);
@@ -123,6 +125,7 @@
 			isa = PBXGroup;
 			children = (
 				4A237A1629A08AE0003209D9 /* UIImageView+Extentions.swift */,
+				4A237A2529A49F49003209D9 /* UIColor+Extentions.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -283,7 +286,8 @@
 				4A237A0C29A08736003209D9 /* TabBarViewController.swift in Sources */,
 				4A237A2429A28152003209D9 /* MovieDetailsViewController.swift in Sources */,
 				4A237A1729A08AE0003209D9 /* UIImageView+Extentions.swift in Sources */,
-				4A237A0E29A08753003209D9 /* ViewController.swift in Sources */,
+				4A237A0E29A08753003209D9 /* HomeViewController.swift in Sources */,
+				4A237A2629A49F49003209D9 /* UIColor+Extentions.swift in Sources */,
 				4A2379FA29A084CD003209D9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

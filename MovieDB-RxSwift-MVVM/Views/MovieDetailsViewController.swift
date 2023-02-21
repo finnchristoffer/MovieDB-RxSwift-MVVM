@@ -10,15 +10,16 @@ import RxSwift
 import RxCocoa
 
 class MovieDetailsViewController: UIViewController {
+    
     // MARK: - Properties
     
     var movieID: Int = 0
     private var vm = MovieViewModel()
     private let disposeBag = DisposeBag()
     
-    lazy var topStackView = reusableStackView(spacing: 5)
-    lazy var middleStackView = reusableStackView(spacing: 0)
-    lazy var bottomStackView = reusableStackView(spacing: 0)
+    lazy var topStackView = reusableStackView(spacing: 25)
+    lazy var middleStackView = reusableStackView(spacing: 10)
+    lazy var bottomStackView = reusableStackView(spacing: 10)
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
@@ -41,12 +42,14 @@ class MovieDetailsViewController: UIViewController {
         let tableView = UITableView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "videoCell")
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        tableView.isScrollEnabled = false
         return tableView
     }()
     
     private lazy var movieTitle: UILabel = {
         let title = UILabel()
         title.font = UIFont.systemFont(ofSize: 22, weight: .bold)
+        title.textColor = UIColor.primaryColor
         title.textAlignment = .center
         title.translatesAutoresizingMaskIntoConstraints = false
         return title
@@ -68,13 +71,14 @@ class MovieDetailsViewController: UIViewController {
     
     private lazy var movieRuntime: UILabel = {
         let label = UILabel()
+        label.textColor = .label
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     
     private lazy var movieGenre: UILabel = {
         let label = UILabel()
-        label.text = "Genre: Romance, Animation, Drama"
+        label.textColor = .label
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -83,6 +87,8 @@ class MovieDetailsViewController: UIViewController {
     private lazy var movieOverview: UILabel = {
         let label = UILabel()
         label.numberOfLines = 0
+        label.textColor = .label
+        label.textAlignment = .justified
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -97,7 +103,7 @@ class MovieDetailsViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.systemBackground
         
         setupViews()
         setupConstraints()
@@ -185,7 +191,7 @@ class MovieDetailsViewController: UIViewController {
         vm.arrangeMovieGenresInHorizontalText()
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] genres in
-                self?.movieGenre.text = genres
+                self?.movieGenre.text = "Genre: \(genres)"
             })
             .disposed(by: disposeBag)
     }

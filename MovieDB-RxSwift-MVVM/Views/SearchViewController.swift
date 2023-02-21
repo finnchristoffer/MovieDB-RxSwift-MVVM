@@ -32,10 +32,11 @@ class SearchViewController: UIViewController {
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.systemBackground
         setupViews()
         setupConstraints()
         setupBindings()
+        selectedCell()
     }
     // MARK: - Helpers
     
@@ -77,14 +78,16 @@ class SearchViewController: UIViewController {
                     cell.textLabel?.text = movie.title
                 }
                 .disposed(by: disposeBag)
-            
-            tableView.rx.modelSelected(Movie.self)
-                .subscribe(onNext: { [weak self] movie in
-                    let movieDetailsView = MovieDetailsViewController()
-                    movieDetailsView.movieID = movie.id
-                    movieDetailsView.hidesBottomBarWhenPushed = true
-                    self?.navigationController?.pushViewController(movieDetailsView, animated: true)
-                })
-                .disposed(by: disposeBag)
         }
+    
+    private func selectedCell() {
+        tableView.rx.modelSelected(Movie.self)
+            .subscribe(onNext: { [weak self] movie in
+                let movieDetailsView = MovieDetailsViewController()
+                movieDetailsView.movieID = movie.id
+                movieDetailsView.hidesBottomBarWhenPushed = true
+                self?.navigationController?.pushViewController(movieDetailsView, animated: true)
+            })
+            .disposed(by: disposeBag)
+    }
 }

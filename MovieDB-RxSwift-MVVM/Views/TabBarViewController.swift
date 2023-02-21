@@ -12,7 +12,7 @@ class TabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let movieVC = UINavigationController(rootViewController: ViewController())
+        let movieVC = UINavigationController(rootViewController: HomeViewController())
         let searchVC = UINavigationController(rootViewController: SearchViewController())
         
         movieVC.title = "Home"

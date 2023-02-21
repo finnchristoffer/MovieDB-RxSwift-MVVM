@@ -20,8 +20,6 @@ class MovieViewModel {
     let videos = BehaviorRelay<[Video]>(value: [])
     let searchedMovies = BehaviorRelay<[Movie]>(value: [])
     
-    private let apiKey = "d8bf466e0e794e7f8499748928d9f491"
-    
     private let nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=d8bf466e0e794e7f8499748928d9f491"
     private let upcomingURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=d8bf466e0e794e7f8499748928d9f491"
     private let topRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=d8bf466e0e794e7f8499748928d9f491"

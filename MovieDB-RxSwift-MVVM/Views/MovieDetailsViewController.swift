@@ -17,9 +17,9 @@ class MovieDetailsViewController: UIViewController {
     private var vm = MovieViewModel()
     private let disposeBag = DisposeBag()
     
-    lazy var topStackView = reusableStackView(spacing: 25)
-    lazy var middleStackView = reusableStackView(spacing: 10)
-    lazy var bottomStackView = reusableStackView(spacing: 10)
+    private lazy var topStackView = reusableStackView(spacing: 25)
+    private lazy var middleStackView = reusableStackView(spacing: 10)
+    private lazy var bottomStackView = reusableStackView(spacing: 10)
     
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()

@@ -26,7 +26,6 @@ class HomeViewController: UIViewController {
     
     private lazy var text: UITextView = {
         let text = UITextView()
-        
         text.translatesAutoresizingMaskIntoConstraints = false
         return text
     }()
@@ -41,6 +40,7 @@ class HomeViewController: UIViewController {
     private lazy var contentView: UIStackView = {
         let view = UIStackView()
         view.axis = .vertical
+        view.spacing = 5
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -79,7 +79,7 @@ class HomeViewController: UIViewController {
     
     private func reuseableCollectionView(identifier: String) -> UICollectionView {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 150, height: 220)
+        layout.itemSize = CGSize(width: 150, height: 250)
         layout.scrollDirection = .horizontal
         let cv = UICollectionView(frame: .zero, collectionViewLayout: layout)
         cv.translatesAutoresizingMaskIntoConstraints = false

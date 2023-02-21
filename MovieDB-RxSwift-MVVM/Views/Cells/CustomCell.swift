@@ -32,8 +32,8 @@ class CustomCell: UICollectionViewCell {
     
     lazy var movieTitle: UILabel = {
         let label = UILabel()
-        label.text = "Kimi no na wa"
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.numberOfLines = 2
         return label
     }()
     

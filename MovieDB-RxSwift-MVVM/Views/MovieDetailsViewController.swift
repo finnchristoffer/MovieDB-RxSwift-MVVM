@@ -153,27 +153,21 @@ class MovieDetailsViewController: UIViewController {
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        NSLayoutConstraint.activate([
-            scrollView.widthAnchor.constraint(equalTo: safeArea.widthAnchor),
-            scrollView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1),
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            
-            movieTitle.topAnchor.constraint(equalTo: topStackView.topAnchor),
-            movieBackdrop.heightAnchor.constraint(equalTo: topStackView.widthAnchor, multiplier: 0.57),
-            movieReleaseDate.topAnchor.constraint(equalTo: middleStackView.topAnchor),
-            movieRuntime.topAnchor.constraint(equalTo: movieReleaseDate.bottomAnchor),
-            movieGenre.topAnchor.constraint(equalTo: movieRuntime.bottomAnchor),
-            tableView.heightAnchor.constraint(equalTo: stackView.heightAnchor, multiplier: getTableViewHeightMultiplier()),
-        ])
+        scrollView.anchor(top: safeArea.topAnchor, bottom: safeArea.bottomAnchor, leading: safeArea.leadingAnchor, trailing: safeArea.trailingAnchor)
+        scrollView.centerX(inView: safeArea)
+        scrollView.setDimensions(width: safeArea.widthAnchor)
+        
+        
+        stackView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor)
+        stackView.setDimensions(width: safeArea.widthAnchor)
+        
+        movieTitle.anchor(top: topStackView.topAnchor)
+        movieBackdrop.setDimensions(height: topStackView.widthAnchor, heightMultiplier: 0.57)
+        movieReleaseDate.anchor(top: middleStackView.topAnchor)
+        movieRuntime.anchor(top: movieReleaseDate.bottomAnchor)
+        movieGenre.anchor(top: movieRuntime.bottomAnchor)
+        tableView.setDimensions(height: stackView.heightAnchor, heightMultiplier: getTableViewHeightMultiplier())
+        
     }
     
     private func bindVM() {

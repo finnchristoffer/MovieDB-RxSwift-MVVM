@@ -110,29 +110,22 @@ class HomeViewController: UIViewController {
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
         
-        NSLayoutConstraint.activate([
-            scrollView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor, constant: 16),
-            scrollView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            
-            contentView.topAnchor.constraint(equalTo: scrollView.topAnchor),
-            contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
-            contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
-            contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            
-            nowPlayingLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-            
-            collectionView1.topAnchor.constraint(equalTo: nowPlayingLabel.bottomAnchor),
-            collectionView1.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.65),
-            
-            collectionView2.topAnchor.constraint(equalTo: upcomingLabel.bottomAnchor),
-            collectionView2.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.65),
-            
-            collectionView3.topAnchor.constraint(equalTo: topRatedLabel.bottomAnchor),
-            collectionView3.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.65),
-        ])
+        scrollView.anchor(top: safeArea.topAnchor, bottom: safeArea.bottomAnchor, leading: safeArea.leadingAnchor, trailing: safeArea.trailingAnchor, paddingLeft: 16)
+        
+        contentView.anchor(top: scrollView.topAnchor, bottom: scrollView.bottomAnchor, leading: scrollView.leadingAnchor, trailing: scrollView.trailingAnchor)
+        contentView.setDimensions(width: scrollView.widthAnchor)
+        
+        nowPlayingLabel.anchor(top: contentView.topAnchor)
+        
+        collectionView1.anchor(top: nowPlayingLabel.bottomAnchor, paddingTop: 10)
+        collectionView1.setDimensions(height: contentView.widthAnchor, heightMultiplier: 0.65)
+
+        collectionView2.anchor(top: upcomingLabel.bottomAnchor, paddingTop: 10)
+        collectionView2.setDimensions(height: contentView.widthAnchor, heightMultiplier: 0.65)
+
+        collectionView3.anchor(top: topRatedLabel.bottomAnchor, paddingTop: 10)
+        collectionView3.setDimensions(height: contentView.widthAnchor, heightMultiplier: 0.65)
+
     }
     
     private func bindVM() {

@@ -43,16 +43,10 @@ class CustomCell: UICollectionViewCell {
     }
     
     func setupConstraints() {
-        NSLayoutConstraint.activate([
-            moviePoster.topAnchor.constraint(equalTo: contentView.topAnchor),
-            moviePoster.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            moviePoster.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.95),
-            moviePoster.heightAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1.3),
-            
-            movieTitle.topAnchor.constraint(equalTo: moviePoster.bottomAnchor, constant: 3),
-            movieTitle.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            movieTitle.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-        ])
+        moviePoster.anchor(top: contentView.topAnchor, leading: contentView.leadingAnchor)
+        moviePoster.setDimensions(width: contentView.widthAnchor, height: contentView.widthAnchor, widthMultiplier: 0.95, heightMultiplier: 1.3)
+        
+        movieTitle.anchor(top: moviePoster.bottomAnchor, leading: contentView.leadingAnchor, trailing: contentView.trailingAnchor, paddingTop: 3)
     }
 }
 

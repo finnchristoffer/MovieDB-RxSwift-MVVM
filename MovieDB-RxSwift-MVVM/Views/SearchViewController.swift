@@ -49,14 +49,8 @@ class SearchViewController: UIViewController {
     
     private func setupConstraints() {
         let safeArea = view.safeAreaLayoutGuide
-        
-        NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            tableView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor),
-            tableView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            tableView.heightAnchor.constraint(equalTo: safeArea.heightAnchor),
-        ])
+        tableView.anchor(top: safeArea.topAnchor, bottom: safeArea.bottomAnchor, leading: safeArea.leadingAnchor, trailing: safeArea.trailingAnchor)
+        tableView.setDimensions(height: safeArea.heightAnchor)
     }
     
     private func setupBindings() {

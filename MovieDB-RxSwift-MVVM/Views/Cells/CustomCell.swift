@@ -16,6 +16,12 @@ class CustomCell: UICollectionViewCell {
         setupConstraints()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        moviePoster.image = nil
+        movieTitle.text = nil
+    }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

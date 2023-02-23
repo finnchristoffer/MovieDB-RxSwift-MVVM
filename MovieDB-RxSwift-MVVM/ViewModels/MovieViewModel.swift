@@ -10,6 +10,7 @@ import RxSwift
 import RxCocoa
 
 class MovieViewModel {
+    
     private let network = NetworkManager()
     private let disposeBag = DisposeBag()
     
@@ -19,10 +20,11 @@ class MovieViewModel {
     let movieDetails = BehaviorRelay<Movie?>(value: nil)
     let videos = BehaviorRelay<[Video]>(value: [])
     let searchedMovies = BehaviorRelay<[Movie]>(value: [])
-    
-    private let nowPlayingURL = "https://api.themoviedb.org/3/movie/now_playing?api_key=d8bf466e0e794e7f8499748928d9f491"
-    private let upcomingURL = "https://api.themoviedb.org/3/movie/upcoming?api_key=d8bf466e0e794e7f8499748928d9f491"
-    private let topRatedURL = "https://api.themoviedb.org/3/movie/top_rated?api_key=d8bf466e0e794e7f8499748928d9f491"
+
+
+    let nowPlayingURL = "\(ConstantString.baseURL)/now_playing?api_key=\(ConstantString.apiKey)"
+    private let upcomingURL = "\(ConstantString.baseURL)/upcoming?api_key=\(ConstantString.apiKey)"
+    private let topRatedURL = "\(ConstantString.baseURL)/top_rated?api_key=\(ConstantString.apiKey)"
     
     func getNowPlayingMovie() {
         network.fetchMovieDataFromAPI(url: nowPlayingURL, expecting: MovieResponse.self)
@@ -46,14 +48,14 @@ class MovieViewModel {
     }
     
     func getMovieDetails(movieID: Int) {
-        let url = "https://api.themoviedb.org/3/movie/\(movieID)?api_key=d8bf466e0e794e7f8499748928d9f491"
+        let url = "\(ConstantString.baseURL)\(movieID)?api_key=\(ConstantString.apiKey)"
         network.fetchMovieDataFromAPI(url: url, expecting: Movie.self)
             .bind(to: movieDetails)
             .disposed(by: disposeBag)
     }
     
     func getMovieVideos(movieID: Int) {
-        let url = "https://api.themoviedb.org/3/movie/\(movieID)/videos?api_key=d8bf466e0e794e7f8499748928d9f491"
+        let url = "\(ConstantString.baseURL)\(movieID)/videos?api_key=\(ConstantString.apiKey)"
         network.fetchMovieDataFromAPI(url: url, expecting: VideoResponse.self)
             .map { $0.results }
             .bind(to: videos)

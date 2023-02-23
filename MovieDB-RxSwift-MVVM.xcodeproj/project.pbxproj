@@ -22,6 +22,7 @@
 		4A237A2429A28152003209D9 /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A2329A28152003209D9 /* MovieDetailsViewController.swift */; };
 		4A237A2629A49F49003209D9 /* UIColor+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A237A2529A49F49003209D9 /* UIColor+Extentions.swift */; };
 		4A723E0829A5ED500033554B /* UIView+Extentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A723E0729A5ED500033554B /* UIView+Extentions.swift */; };
+		4AC3861429A7247100553731 /* String+Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC3861329A7247100553731 /* String+Constant.swift */; };
 		58864128D6B85B055B67C4EA /* Pods_MovieDB_RxSwift_MVVM.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8777A85410356B004717BCF7 /* Pods_MovieDB_RxSwift_MVVM.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		4A237A2329A28152003209D9 /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		4A237A2529A49F49003209D9 /* UIColor+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extentions.swift"; sourceTree = "<group>"; };
 		4A723E0729A5ED500033554B /* UIView+Extentions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extentions.swift"; sourceTree = "<group>"; };
+		4AC3861329A7247100553731 /* String+Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Constant.swift"; sourceTree = "<group>"; };
 		5624579C85C0B1D0160B64D2 /* Pods-MovieDB-RxSwift-MVVM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB-RxSwift-MVVM.release.xcconfig"; path = "Target Support Files/Pods-MovieDB-RxSwift-MVVM/Pods-MovieDB-RxSwift-MVVM.release.xcconfig"; sourceTree = "<group>"; };
 		8777A85410356B004717BCF7 /* Pods_MovieDB_RxSwift_MVVM.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MovieDB_RxSwift_MVVM.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D41AD604A50E4E9BDB83F909 /* Pods-MovieDB-RxSwift-MVVM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MovieDB-RxSwift-MVVM.debug.xcconfig"; path = "Target Support Files/Pods-MovieDB-RxSwift-MVVM/Pods-MovieDB-RxSwift-MVVM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 		4A2379F629A084CD003209D9 /* MovieDB-RxSwift-MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				4AC3861229A7244E00553731 /* Utilities */,
 				4A237A1529A08873003209D9 /* Network */,
 				4A237A1429A08869003209D9 /* Extentions */,
 				4A237A1329A0885E003209D9 /* ViewModels */,
@@ -147,6 +150,14 @@
 				4A237A2129A24AF6003209D9 /* CustomCell.swift */,
 			);
 			path = Cells;
+			sourceTree = "<group>";
+		};
+		4AC3861229A7244E00553731 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				4AC3861329A7247100553731 /* String+Constant.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		6C554D9E6193AFCDBD93C3BA /* Frameworks */ = {
@@ -290,6 +301,7 @@
 				4A237A0C29A08736003209D9 /* TabBarViewController.swift in Sources */,
 				4A237A2429A28152003209D9 /* MovieDetailsViewController.swift in Sources */,
 				4A237A1729A08AE0003209D9 /* UIImageView+Extentions.swift in Sources */,
+				4AC3861429A7247100553731 /* String+Constant.swift in Sources */,
 				4A237A0E29A08753003209D9 /* HomeViewController.swift in Sources */,
 				4A237A2629A49F49003209D9 /* UIColor+Extentions.swift in Sources */,
 				4A2379FA29A084CD003209D9 /* SceneDelegate.swift in Sources */,

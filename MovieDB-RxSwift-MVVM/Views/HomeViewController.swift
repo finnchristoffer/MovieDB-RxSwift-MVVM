@@ -60,6 +60,7 @@ class HomeViewController: UIViewController {
         self.navigationController?.navigationBar.prefersLargeTitles = true
         
     }
+    
     // MARK: - Helpers
     
     private func reuseableTitleLabel(text: String) -> UILabel {
